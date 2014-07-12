@@ -1,0 +1,51 @@
+<html>
+<head><title>{{.Title}}</title>
+
+<style type="text/css">
+body {
+	background-color: gray;
+}
+.ui {
+	background-color: white;
+	max-width: 50em;
+	min-height: 1em;
+}
+.card > h3 {
+	border-bottom: 1px solid gray;
+}
+.child-container > ul > li {
+	display: inline;
+}
+</style>
+</head>
+
+<body>
+<div class="ui">
+{{range .Path}}
+	<a href="{{.Url}}">{{.Name}}</a>&nbsp;/&nbsp;
+{{end}}
+</div>
+
+<h1 class="ui">{{.Title}}</h1>
+
+{{if len(.Children) gt 0}}
+<div class="child-container ui">
+<ul>
+	{{range .Children}}
+		<li><a href="{{.Url}}">{{.Name}}</a></li>
+	{{end}}
+</ul>
+</div>
+{{end}}
+
+{{if len(.Cards) gt 0}}
+	{{ range .Cards }}
+		<div class="card ui">
+		<h3>{{.Title}}</h3>
+		{{.Body}}
+		</div>
+	{{end}}
+{{end}}
+
+</body>
+</html>

@@ -17,6 +17,7 @@ type Devcards struct {
 
 type Card interface {
 	Title() string
+	Body() string
 }
 
 func (d *Devcards) Serve() {
